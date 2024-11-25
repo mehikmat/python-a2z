@@ -1,12 +1,10 @@
 # Advanced Python Tutorial: Building a Chat Application
 
 ## Project Overview
-
 We'll create a real-time chat application where multiple clients can connect to a server and send/receive messages.
 The server will handle incoming connections and broadcast messages to all connected clients.
 
 ## Features
-
 - Server: Handles client connections and broadcasts messages.
 - Client: Allows users to send and receive messages.
 - Concurrency: Uses threading to manage multiple clients.
@@ -16,12 +14,10 @@ The server will handle incoming connections and broadcast messages to all connec
 ## Setting Up the Environment
 
 ### Prerequisites:
-
 - Python 3.8 or higher
 - Basic understanding of networking (IP and ports)
 
 ## Recommended Tools:
-
 - Code Editor: VSCode, PyCharm, or any text editor.
 - Installations: No external libraries are required for this project since we’ll use Python’s built-in modules
   like socket, threading, json, and logging.
@@ -55,13 +51,14 @@ chat_application/
 # Step 1: Setting Up Modules
 We’ll create modules for server, client, and logging functionalities.
 
-1.1 Server Module
-File: server/server.py
+## 1.1 Server Module
+
+### File: server/server.py
 This module will manage the server’s operations: accepting connections and broadcasting messages.
 
-python
-Copy code
-# server/server.py
+### server/server.py
+
+```
 import socket
 import threading
 from .client_handler import handle_client
@@ -101,13 +98,16 @@ class ChatServer:
     def stop(self):
         logger.info("Shutting down server...")
         self.server_socket.close()
-1.2 Client Handler Module
-File: server/client_handler.py
+```
+
+## 1.2 Client Handler Module
+
+### File: server/client_handler.py
 This module handles communication with individual clients and broadcasts messages to all connected clients.
 
-python
-Copy code
-# server/client_handler.py
+### server/client_handler.py
+
+```
 import json
 
 def handle_client(client_socket, clients, logger):
@@ -134,13 +134,16 @@ def broadcast(message, sender_socket, clients):
             except:
                 client.close()
                 clients.remove(client)
-1.3 Server Logger Module
-File: server/logger.py
+```
+
+## 1.3 Server Logger Module
+
+### File: server/logger.py
 This module configures logging for server activities.
 
-python
-Copy code
-# server/logger.py
+### server/logger.py
+
+```
 import logging
 
 def setup_logger(log_file):
@@ -151,13 +154,16 @@ def setup_logger(log_file):
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
-1.4 Client Module
-File: client/client.py
+```
+
+## 1.4 Client Module
+
+### File: client/client.py
 This module implements the client’s functionality to connect to the server and send/receive messages.
 
-python
-Copy code
-# client/client.py
+### client/client.py
+
+```
 import socket
 import threading
 from .logger import setup_logger
@@ -198,13 +204,16 @@ class ChatClient:
                     print(f"Server: {message}")
         except:
             logger.error("Disconnected from server.")
-1.5 Client Logger Module
-File: client/logger.py
+```
+
+### 1.5 Client Logger Module
+
+#### File: client/logger.py
 This module configures logging for client activities.
 
-python
-Copy code
-# client/logger.py
+#### client/logger.py
+
+```  
 import logging
 
 def setup_logger(log_file):
@@ -215,11 +224,15 @@ def setup_logger(log_file):
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
-Step 2: Running the Application
-File: main.py
-python
-Copy code
-# main.py
+```
+
+# Step 2: Running the Application
+
+### File: app.py
+
+### main.py
+
+```
 from server.server import ChatServer
 from client.client import ChatClient
 
@@ -239,6 +252,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+
 Step 3: Testing
 Start the Server:
 
