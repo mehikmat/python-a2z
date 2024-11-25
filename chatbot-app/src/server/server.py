@@ -1,6 +1,6 @@
 import socket
 import threading
-from client_handler import handle_client
+from .client_handler import handle_client
 from helper import setup_logger
 
 # Logger setup
