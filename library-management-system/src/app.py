@@ -110,7 +110,7 @@ def main():
 
 def load_data(library):
     try:
-        with open('data/books.json', 'r') as f:
+        with open('../data/books.json', 'r') as f:
             books_data = json.load(f)
             for b in books_data:
                 book = Book(**b)
@@ -119,7 +119,7 @@ def load_data(library):
         print("books.json not found. Starting with an empty book list.")
 
     try:
-        with open('data/members.json', 'r') as f:
+        with open('../data/members.json', 'r') as f:
             members_data = json.load(f)
             for m in members_data:
                 borrowed_books = [Book(**b) for b in m.get("borrowed_books")]
@@ -136,12 +136,12 @@ def load_data(library):
 
 def save_data(library):
     books_data = [vars(book) for book in library.list_books()]
-    with open('data/books.json', 'w') as f:
+    with open('../data/books.json', 'w') as f:
         json.dump(books_data, f, indent=4)
 
     # vars only work for top level class attributes but doesn't handle nested objects like borrowed_books.
     members_data = [member.to_dict() for member in library.list_members()]
-    with open('data/members.json', 'w') as f:
+    with open('../data/members.json', 'w') as f:
         json.dump(members_data, f, indent=4)
 
 

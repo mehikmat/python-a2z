@@ -3,7 +3,7 @@ import threading
 from helper import setup_logger
 
 # Logger setup
-logger = setup_logger("client.log", "ClientChat")
+logger = setup_logger("log/client.log", "ClientChat")
 
 
 class ChatClient:

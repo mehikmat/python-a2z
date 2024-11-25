@@ -4,7 +4,7 @@ from .client_handler import handle_client
 from helper import setup_logger
 
 # Logger setup
-logger = setup_logger("server.log", "ChatServer")
+logger = setup_logger("log/server.log", "ChatServer")
 
 
 class ChatServer:
