@@ -1,7 +1,11 @@
 Comprehensive Python Tutorial: Building a Library Management System
-Welcome to this comprehensive Python tutorial! We'll embark on building a Library Management System—a project that will help you grasp essential Python concepts such as classes, objects, inheritance, packages, methods, and more. By the end of this tutorial, you'll have a solid understanding of Python's object-oriented programming (OOP) features and how to apply them in a real-world project.
+-------------------------------------------------------------------
+Welcome to this comprehensive Python tutorial! We'll embark on building a Library Management System—a project that
+will help you grasp essential Python concepts such as classes, objects, inheritance, packages, methods, and more.
+By the end of this tutorial, you'll have a solid understanding of Python's object-oriented programming (OOP) features
+and how to apply them in a real-world project.
 
-Table of Contents
+# Table of Contents
 1. Project Overview
 2. Setting Up the Environment
 3. Project Structure
@@ -24,15 +28,16 @@ Table of Contents
 12. Step 9: Final Touches and Testing
 13. Conclusion
 
-Project Overview
+# Project Overview
 We'll develop a Library Management System with the following features:
-- Book Management: Add, remove, and view books.
-- Member Management: Register, remove, and view members.
-- Borrowing System: Members can borrow and return books.
-- User Roles: Differentiate between librarians and regular members.
-- Data Persistence: Save and load data from files.
 
-This project will cover:
+- Book Management: add, remove, and view books.
+- Member Management: register, remove, and view members.
+- Borrowing System: members can borrow and return books.
+- User Roles: Differentiate between librarians and regular members.
+- Data Persistence: save and load data from files.
+
+# This project will cover
 - Classes and Objects
 - Inheritance and Polymorphism
 - Encapsulation
@@ -43,15 +48,17 @@ This project will cover:
 - Setting Up the Environment
 
 Before we start coding, ensure you have Python installed on your system. You can download it from python.org.
-We'll use Python 3.8 or higher for this project.
+We'll use **Python 3.8** or higher for this project.
 
-Recommended Tools:
-- Code Editor: VSCode, PyCharm, or any text editor.
+# Recommended Tools
+
+- Code Editor: IntelliJ IDEA, PyCharm, VSCode or any text editor.
 - Version Control: Git (optional but recommended).
 
-- Project Structure
+# Project Structure
 Organizing your project files is crucial. Here's the structure we'll follow:
 
+```
 library_management_system/
 ├── library/
 │   ├── __init__.py
@@ -64,20 +71,22 @@ library_management_system/
 │   └── members.json
 ├── main.py
 └── requirements.txt
-
+```
 - library/: Contains all class definitions.
 - data/: Stores JSON files for data persistence.
 - main.py: Entry point for the application.
-- requirements.txt: Lists any external dependencies.
+- requirements.txt: Lists any external dependencies similar to pom file in maven.
 
-
-Step 1: Creating the Basic Classes
+# Step 1: Creating the Basic Classes
 We'll start by defining the fundamental classes: Book and Member.
 
-4.1. Book Class
+### 4.1. Book Class
+
 File: library/book.py
 
-# library/book.py
+#### library/book.py
+
+```
 class Book:
     def __init__(self, book_id, title, author, copies):
         self.book_id = book_id
@@ -87,21 +96,27 @@ class Book:
 
     def __str__(self):
         return f"ID: {self.book_id}, Title: '{self.title}', Author: {self.author}, Copies: {self.copies}"
+```
 Explanation:
 
-Attributes:
-book_id: Unique identifier for the book.
-title: Title of the book.
-author: Author's name.
-copies: Number of available copies.
+##### Attributes:
 
-Methods:
-__init__: Constructor to initialize a book object.
-__str__: String representation for easy printing.
-4.2. Member Class
+* book_id: Unique identifier for the book.
+* title: Title of the book.
+* author: Author's name.
+* copies: Number of available copies.
+
+##### Methods:
+
+* __init__: Constructor to initialize a book object.
+* __str__: String representation for easy printing.
+
+### 4.2. Member Class
 File: library/member.py
 
-# library/member.py
+##### library/member.py
+
+```
 class Member:
     def __init__(self, member_id, name, email):
         self.member_id = member_id
@@ -118,26 +133,31 @@ class Member:
     def __str__(self):
         borrowed = ', '.join([book.title for book in self.borrowed_books]) or 'None'
         return f"ID: {self.member_id}, Name: {self.name}, Email: {self.email}, Borrowed Books: {borrowed}"
+```
 Explanation:
 
-Attributes:
-member_id: Unique identifier for the member.
-name: Member's name.
-email: Member's email address.
-borrowed_books: List of books the member has borrowed.
+##### Attributes:
 
-Methods:
-borrow_book: Adds a book to borrowed_books.
-return_book: Removes a book from borrowed_books.
-__str__: String representation for easy printing.
+* member_id: Unique identifier for the member.
+* name: Member's name.
+* email: Member's email address.
+* borrowed_books: List of books the member has borrowed.
 
-Step 2: Implementing Inheritance
+##### Methods:
+
+* borrow_book: Adds a book to borrowed_books.
+* return_book: Removes a book from borrowed_books.
+* __str__: String representation for easy printing.
+
+# Step 2: Implementing Inheritance
 We'll introduce a Librarian class that inherits from Member, differentiating user roles.
 
-4.3. Librarian and Member Subclasses
+### 4.3. Librarian and Member Subclasses
 File: library/librarian.py
 
-# library/librarian.py
+#### library/librarian.py
+
+```
 from .member import Member
 
 class Librarian(Member):
@@ -154,28 +174,32 @@ class Librarian(Member):
     def __str__(self):
         base = super().__str__()
         return f"{base}, Employee ID: {self.employee_id} (Librarian)"
+```
 Explanation:
 
-Inheritance:
+##### Inheritance:
 Librarian inherits from Member, gaining all its attributes and methods.
 
-Additional Attributes:
+##### Additional Attributes:
 employee_id: Unique identifier for the librarian.
 
-Additional Methods:
-add_book: Adds a book to the library.
-remove_book: Removes a book from the library.
+##### Additional Methods:
 
-Overridden Methods:
+* add_book: Adds a book to the library.
+* remove_book: Removes a book from the library.
+
+##### Overridden Methods:
 __str__: Enhances the string representation to indicate the role.
 
-Step 3: Managing Books and Members
+# Step 3: Managing Books and Members
 We'll create a Library class to manage books and members.
 
-4.4. Library Class
+### 4.4. Library Class
 File: library/library.py
 
-# library/library.py
+#### library/library.py
+
+```
 import json
 from .book import Book
 from .member import Member
@@ -238,56 +262,65 @@ class Library:
 
     def list_members(self):
         return list(self.members.values())
+```
 Explanation:
 
-Attributes:
-books: Dictionary to store books with book_id as keys.
-members: Dictionary to store members and librarians with member_id as keys.
+##### Attributes:
 
-Methods:
-add_book: Adds a book or updates copies if it exists.
-remove_book: Removes a book by book_id.
-register_member: Registers a new member or librarian.
-remove_member: Removes a member by member_id.
-borrow_book: Allows a member to borrow a book.
-return_book: Allows a member to return a book.
-list_books: Returns a list of all books.
-list_members: Returns a list of all members.
+* books: Dictionary to store books with book_id as keys.
+* members: Dictionary to store members and librarians with member_id as keys.
 
-Step 4: Creating Packages
-Organizing code into packages improves maintainability. We've already set up the library package. Ensure each .py file inside the library directory has an __init__.py file.
+##### Methods:
+
+* add_book: Adds a book or updates copies if it exists.
+* remove_book: Removes a book by book_id.
+* register_member: Registers a new member or librarian.
+* remove_member: Removes a member by member_id.
+* borrow_book: Allows a member to borrow a book.
+* return_book: Allows a member to return a book.
+* list_books: Returns a list of all books.
+* list_members: Returns a list of all members.
+
+# Step 4: Creating Packages
+
+Organizing code into packages improves maintainability. We've already set up the library package.
+Ensure the library directory has an __init__.py file to be recognized as package.
 
 File: library/__init__.py
 
-# library/__init__.py
+#### library/__init__.py
+
+```
 from .book import Book
 from .member import Member
 from .librarian import Librarian
 from .library import Library
-
+```
 This allows us to import classes directly from the library package.
 
-Step 5: Adding Methods and Functionality
+# Step 5: Adding Methods and Functionality
 We'll enhance the Library class with more robust methods and add functionality for data persistence.
 
-4.5. Organizing Code into Packages
+### 4.5. Organizing Code into Packages
 Ensure the library package is correctly organized, as shown earlier. This step is already covered in Step 4.
 
-4.6. Library Methods
+### 4.6. Library Methods
 We've already added essential methods in the Library class. Next, we'll implement data persistence.
 
-Step 6: Handling Exceptions
+# Step 6: Handling Exceptions
 Proper error handling ensures the program runs smoothly and provides meaningful feedback.
 Example: Handling Borrowing Errors
 In the borrow_book method, we raise ValueError when issues arise. We'll handle these exceptions in the user interface.
 
-Step 7: Building a User Interface
+# Step 7: Building a User Interface
 We'll create a simple Command-Line Interface (CLI) to interact with the library system.
 
-4.7. Command-Line Interface
+### 4.7. Command-Line Interface
 File: main.py
-# main.py
 
+#### main.py
+
+```
 from library import Book, Member, Librarian, Library
 import json
 
@@ -395,6 +428,7 @@ def main():
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
 
+
 def load_data(library):
     try:
         with open('data/books.json', 'r') as f:
@@ -431,34 +465,35 @@ def save_data(library):
 if __name__ == "__main__":
     main()
 
+```
 Explanation:
 
-Main Menu: Presents options to the user for different operations.
-Input Handling: Takes user input to perform actions.
-Exception Handling: Catches and displays errors gracefully.
-Data Loading and Saving: Reads from and writes to JSON files for persistence.
-User Roles: Differentiates between librarians and regular members when adding/removing books.
+* Main Menu: Presents options to the user for different operations.
+* Input Handling: Takes user input to perform actions.
+* Exception Handling: Catches and displays errors gracefully.
+* Data Loading and Saving: Reads from and writes to JSON files for persistence.
+* User Roles: Differentiates between librarians and regular members when adding/removing books.
 
-Step 8: Persisting Data
+# Step 8: Persisting Data
 We'll use JSON files to save and load data, ensuring information isn't lost between sessions.
 
-4.8. Saving and Loading Data
+### 4.8. Saving and Loading Data
 In main.py, the load_data and save_data functions handle data persistence.
 
-Key Points:
+#### Key Points:
 
-Loading Data:
+##### Loading Data:
 Tries to read books.json and members.json.
 If files don't exist, starts with empty lists.
-Saving Data:
 
+##### Saving Data:
 Converts book and member objects to dictionaries using vars().
 Writes data to JSON files with indentation for readability.
 File: data/books.json and data/members.json
 
 These files will be created automatically when you run the program and perform add operations.
 
-Step 9: Final Touches and Testing
+# Step 9: Final Touches and Testing
 Before deploying, ensure all functionalities work as expected.
 
 Testing Steps:
@@ -492,25 +527,35 @@ Exit and Restart:
 
 Ensure data persists after restarting the application.
 
-Potential Enhancements:
+### Potential Enhancements:
 Search Functionality: Allow searching books by title or author.
 GUI Interface: Build a graphical user interface using Tkinter or PyQt.
 Advanced Permissions: Implement more detailed user roles and permissions.
 Database Integration: Use a database like SQLite for data management.
 
-Conclusion
-Congratulations! You've built a fully functional Library Management System in Python, covering essential OOP concepts such as classes, objects, inheritance, and more. Here's what you've learned:
+### Conclusion
 
-Classes and Objects: Defined Book, Member, and Librarian classes.
-Inheritance: Created a Librarian class that inherits from Member.
-Encapsulation: Managed access to data through class methods.
-Packages and Modules: Organized code into a library package.
-Exception Handling: Handled errors gracefully in the CLI.
-File I/O: Persisted data using JSON files.
-Command-Line Interface: Built an interactive CLI for user interaction.
-This project serves as a strong foundation for further exploration into Python and software development. You can expand upon it, integrate more features, or use it as a stepping stone for larger projects.
+Congratulations! You've built a fully functional Library Management System in Python, covering essential OOP concepts
+such as classes, objects, inheritance, and more. Here's what you've learned:
 
-Next Steps:
-Refactor Code: Improve code structure and add docstrings.
-Implement Testing: Write unit tests using unittest or pytest.
-Explore Advanced Topics: Delve into topics like multithreading, networking, or web development with frameworks like Django or Flask.
+* Classes and Objects: Defined Book, Member, and Librarian classes.
+* Inheritance: Created a Librarian class that inherits from Member.
+* Encapsulation: Managed access to data through class methods.
+* Packages and Modules: Organized code into a library package.
+* Exception Handling: Handled errors gracefully in the CLI.
+* File I/O: Persisted data using JSON files.
+* Command-Line Interface: Built an interactive CLI for user interaction.
+
+This project serves as a strong foundation for further exploration into Python and software development.
+You can expand upon it, integrate more features, or use it as a stepping stone for larger projects.
+
+### Next Steps:
+
+* Refactor Code: Improve code structure and add docstrings.
+* Implement Testing: Write unit tests using unittest or pytest.
+* Explore Advanced Topics: Delve into topics like multithreading, networking, or web development with frameworks like
+  Django or Flask.
+
+### Tips:
+
+you can use @classmethod for making static methods in class and @dataclass annotation to mark as domain class

@@ -1,0 +1,26 @@
+[
+  {
+    "book_id": "1",
+    "title": "Book Title 1",
+    "author": "Book Author 1",
+    "copies": 95
+  },
+  {
+    "book_id": "2",
+    "title": "Book Title 2",
+    "author": "Book Author 2",
+    "copies": 100
+  },
+  {
+    "book_id": "3",
+    "title": "Book Title 3",
+    "author": "Hikmat",
+    "copies": 100
+  },
+  {
+    "book_id": "34",
+    "title": "dsfsd",
+    "author": "dsfsd",
+    "copies": 5644
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "member_id": "1",
+    "name": "Member 1",
+    "email": "member1@gmail.com",
+    "borrowed_books": [
+      {
+        "book_id": "1",
+        "title": "Book Title 1",
+        "author": "Book Author 1",
+        "copies": 95
+      }
+    ]
+  }
+]
