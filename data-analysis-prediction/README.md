@@ -1,5 +1,5 @@
 Mini-Project: Sales Data Analysis and Prediction
-
+------------------------------------------------
 Objective:
 Analyze and visualize sales data using Python.
 Build a basic linear regression model to predict future sales.
