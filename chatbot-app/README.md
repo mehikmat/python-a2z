@@ -1,28 +1,35 @@
-Advanced Python Tutorial: Building a Chat Application
+# Advanced Python Tutorial: Building a Chat Application
 
-Project Overview
-We'll create a real-time chat application where multiple clients can connect to a server and send/receive messages. The server will handle incoming connections and broadcast messages to all connected clients.
+## Project Overview
 
-Features
-Server: Handles client connections and broadcasts messages.
-Client: Allows users to send and receive messages.
-Concurrency: Uses threading to manage multiple clients.
-Modular Design: Code will be organized into reusable modules.
-Logging: Tracks server and client activity in log files.
-Setting Up the Environment
-Prerequisites:
-Python 3.8 or higher
-Basic understanding of networking (IP and ports)
-Recommended Tools:
-Code Editor: VSCode, PyCharm, or any text editor.
-Installations:
-No external libraries are required for this project since we’ll use Python’s built-in modules like socket, threading, json, and logging.
+We'll create a real-time chat application where multiple clients can connect to a server and send/receive messages.
+The server will handle incoming connections and broadcast messages to all connected clients.
 
-Project Structure
+## Features
+
+- Server: Handles client connections and broadcasts messages.
+- Client: Allows users to send and receive messages.
+- Concurrency: Uses threading to manage multiple clients.
+- Modular Design: Code will be organized into reusable modules.
+- Logging: Tracks server and client activity in log files.
+
+## Setting Up the Environment
+
+### Prerequisites:
+
+- Python 3.8 or higher
+- Basic understanding of networking (IP and ports)
+
+## Recommended Tools:
+
+- Code Editor: VSCode, PyCharm, or any text editor.
+- Installations: No external libraries are required for this project since we’ll use Python’s built-in modules
+  like socket, threading, json, and logging.
+
+## Project Structure
 Here’s how the project files will be organized:
 
-markdown
-Copy code
+```
 chat_application/
 ├── server/
 │   ├── __init__.py
@@ -33,19 +40,19 @@ chat_application/
 │   ├── __init__.py
 │   ├── client.py
 │   ├── logger.py
-├── main.py
-server/: Contains server-related modules.
+├── app.py
+```
 
-server.py: Starts the server and accepts client connections.
-client_handler.py: Handles individual client threads.
-logger.py: Handles server-side logging.
-client/: Contains client-related modules.
+- server/: Contains server-related modules.
+- server.py: Starts the server and accepts client connections.
+- client_handler.py: Handles individual client threads.
+- logger.py: Handles server-side logging.
+- client/: Contains client-related modules.
+- client.py: Provides client functionality.
+- logger.py: Handles client-side logging.
+- app.py: Entry point to start the server or client.
 
-client.py: Provides client functionality.
-logger.py: Handles client-side logging.
-main.py: Entry point to start the server or client.
-
-Step 1: Setting Up Modules
+# Step 1: Setting Up Modules
 We’ll create modules for server, client, and logging functionalities.
 
 1.1 Server Module
