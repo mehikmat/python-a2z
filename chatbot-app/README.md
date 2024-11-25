@@ -254,30 +254,43 @@ if __name__ == "__main__":
     main()
 ```
 
-Step 3: Testing
-Start the Server:
+# Step 3: Testing
 
-Run main.py and choose 1 to start the server.
+### Start the Server:
+
+Run app.py and choose 1 to start the server.
 The server will listen for connections on 127.0.0.1:5000.
-Start Multiple Clients:
 
-Open new terminals and run main.py, choosing 2 to start clients.
+### Start Multiple Clients:
+
+Open new terminals and run app.py, choosing 2 to start clients.
 Clients will connect to the server.
-Send Messages:
 
+### Send Messages:
 Type a message in one client and watch it appear on all other clients.
-Advanced Concepts Covered
-Multithreading: Handled multiple client connections using threads.
-Networking: Used sockets for real-time communication.
-Modules: Organized the project into reusable modules.
-Logging: Recorded activities for debugging and tracking.
-Next Steps
-Enhance Security:
-Add encryption using libraries like ssl or cryptography.
-Implement User Authentication:
-Require clients to log in with usernames and passwords.
-GUI Interface:
-Use a library like Tkinter or PyQt for a graphical chat client.
-File Sharing:
-Extend the chat application to allow file sharing between clients.
+
+### Advanced Concepts Covered
+
+* Multithreading: Handled multiple client connections using threads.
+* Networking: Used sockets for real-time communication.
+* Modules: Organized the project into reusable modules.
+* Logging: Recorded activities for debugging and tracking.
+
+## Next Steps
+
+### Enhance Security:
+
+* Add encryption using libraries like ssl or cryptography.
+
+### Implement User Authentication:
+
+* Require clients to log in with usernames and passwords.
+
+### GUI Interface:
+
+* Use a library like Tkinter or PyQt for a graphical chat client.
+
+### File Sharing:
+
+* Extend the chat application to allow file sharing between clients.
 Enjoy building your chat application! 🎉
