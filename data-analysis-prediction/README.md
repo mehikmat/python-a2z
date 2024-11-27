@@ -1,6 +1,7 @@
 Mini-Project: Sales Data Analysis and Prediction
 ------------------------------------------------
 Objective:
+Learn advanced tools like pandas,numpy,pytorch,scikit-learn,tensorflow
 Analyze and visualize sales data using Python.
 Build a basic linear regression model to predict future sales.
 Python Concepts and Libraries Used:
