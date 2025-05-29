@@ -6,6 +6,8 @@ By the end of this tutorial, you'll have a solid understanding of Python's objec
 and how to apply them in a real-world project.
 
 # Table of Contents
+
+```markdown
 1. Project Overview
 2. Setting Up the Environment
 3. Project Structure
@@ -27,6 +29,7 @@ and how to apply them in a real-world project.
        4.8. Saving and Loading Data
 12. Step 9: Final Touches and Testing
 13. Conclusion
+```
 
 # Project Overview
 We'll develop a Library Management System with the following features:
